@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-products-table
+      author: naspredam
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: products
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: product_pkey
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name_product
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: promotion_price
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: false
+                  name: updated_at
+                  type: TIMESTAMP
+            tableName: products
